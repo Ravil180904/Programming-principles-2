@@ -2,4 +2,4 @@
 print("Hello world")
 
 #Python exercises
-print("Hello world")
+print(5+5)
