@@ -1,0 +1,1 @@
+print ("Salat maletum")
