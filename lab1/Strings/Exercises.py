@@ -10,3 +10,35 @@ x = txt[0]
 print(x, "\n")
 
 #3 Get the characters from index 2 to index 4 (llo)
+txt = "Hello world"
+x = txt[2:5]
+print(x, "\n")
+
+#4 Return the string without any whitespace at the beginning or the end.
+txt = "Hello world"
+x = txt.strip()
+print(x, "\n")
+
+#5. Return the string without any whitespace at the beginning or the end.
+
+txt = "Hello World"
+txt = txt.upper()
+print(txt, "\n")
+
+#6. Convert the value of txt to lower case.
+
+txt = "Hello World"
+txt = txt.lower()
+print(txt, "\n")
+
+#7. Replace the character H with a J.
+
+txt = "Hello World"
+txt = txt.replace("H", "J")
+print(txt, "\n")
+
+#8. Insert the correct syntax to add a placeholder for the age parameter.
+
+age = 36
+txt = "My name is John, and I am {}"
+print(txt.format(age))

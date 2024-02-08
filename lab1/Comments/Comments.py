@@ -15,8 +15,3 @@ written in
 more than just one
 """
 print("Hello world!!")
-
-#Exercise
-
-#This is a comment
-print("Hello")

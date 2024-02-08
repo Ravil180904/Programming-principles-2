@@ -13,6 +13,3 @@
 # 4. python variables
 #x=5
 #y="Hello, World!"
-
-#5. Exercise
-print ("Hello world")
