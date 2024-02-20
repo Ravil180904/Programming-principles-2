@@ -34,25 +34,17 @@ print(today_drop_microseconds)
 print()
 
 # 4. Write a Python program to calculate two date difference in seconds.
-
-import json
-
-with open('lab4/json/sample-data.json', 'r') as file:
-    data = json.load(file)
-
-output = {
-    "totalCount": str (len(data['imdata'])),
-    "imdata": []
-}
-
-for item in ['imdata']:
-    l1_phys_if = item ['l1physIf']['attributes']
-
-format_interface = "{:50}".format (
-    l1_phys_if ['adminSt'],
-    l1_phys_if ['bw'],
-    l1_phys_if ['mode']
-)
-
-print(format_interface)
-print(f"Total count {output['totalCount']}")
+from datetime import datetime, timedelta
+year = int(input("Year: "))
+month = int(input("Month: "))
+day = int(input("Day: "))
+hours = int(input("Hours: "))
+minutes = int(input("Minutes: "))
+seconds = int(input("Seconds: "))
+def date_difference(date2, date1):
+    timedelta = date2 - date1
+    return timedelta.days * 24 * 3600 + timedelta.seconds
+#date1 = datetime.strptime('2020-02-19 14:30:00', '%Y-%m-%d %H:%M:%S')
+date1 = datetime(year, month, day, hours, minutes, seconds)
+date2 = datetime.now()
+print("\n%d seconds" %(date_difference(date2, date1)))

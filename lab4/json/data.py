@@ -8,13 +8,14 @@ output = {
     "imdata": []
 }
 
-for item in ['imdata']:
-    l1_phys_if = item ['l1physIf']['attributes']
+for item in data['imdata']:
+    l1_Phys_if = item ['            "l1PhysIf": {
+']['attributes']
 
 format_interface = "{:<50} {:<80} {:<30}".format (
-    l1_phys_if = ['adminSt'],
-    l1_phys_if = ['bw'],
-    l1_phys_if = ['mode']
+    l1_Phys_if  ['adminSt'],
+    l1_Phys_if  ['bw'],
+    l1_Phys_if  ['mode']
 )
 
 print(format_interface)
