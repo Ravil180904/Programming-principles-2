@@ -15,12 +15,6 @@ for item in data['imdata']:
     speed = item["l1PhysIf"]["attributes"]["speed"]
     mtu = item["l1PhysIf"]["attributes"]["mtu"]
 
-"""format_topology = "{:<67} {:14} {:<50}".format (
-    l1PhysIf ['dn'],
-    l1PhysIf ['fecMode'],
-    l1PhysIf ['mtu']
-)
-"""
 format_Dn = "{:<45} {:<20} {:<15} {:<40}".format (
     dn, 
     descr, 
