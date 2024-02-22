@@ -9,12 +9,23 @@ output = {
 }
 
 for item in data['imdata']:
-    l1PhysIf = item ["l1PhysIf"]['attributes']
+    l1PhysIf = item ["l1PhysIf"]["attributes"]
+    dn = item["l1PhysIf"]["attributes"]["dn"]
+    descr = item["l1PhysIf"]["attributes"]["descr"]
+    speed = item["l1PhysIf"]["attributes"]["speed"]
+    mtu = item["l1PhysIf"]["attributes"]["mtu"]
 
-format_topology = "{:<20} {:<50} {:<60}".format (
-    l1PhysIf ['dn']
-    l1PhysIf ['fecMode']
+"""format_topology = "{:<67} {:14} {:<50}".format (
+    l1PhysIf ['dn'],
+    l1PhysIf ['fecMode'],
     l1PhysIf ['mtu']
+)
+"""
+format_Dn = "{:<45} {:<20} {:<15} {:<40}".format (
+    dn, 
+    descr, 
+    speed, 
+    mtu 
 )
 
 """format_interface = "{:<50} {:<20} {:<80}".format (
@@ -25,7 +36,10 @@ format_topology = "{:<20} {:<50} {:<60}".format (
 
 print('Interface Status')
 print("="*80)
-print("DN" "                      " "Description" "         "  "Speed" "     " "MTU")
-print("-"*80)
-print(format_topology)
-print(f"Total count {output['totalCount']}")
+print(
+"DN                                              Description         Speed          MTU" "\n"
+"-----------------------------------------------  ----------         ------        ------ ")
+print(format_Dn)
+print(format_Dn)
+print(format_Dn)
+#print(f"Total count {output['totalCount']}")
