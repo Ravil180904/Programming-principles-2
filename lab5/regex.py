@@ -79,12 +79,22 @@ print(str(text))"""
 
 word = input("Enter a word: ")
 text = re.findall("[A-Z][a-z]*", word)
-nalog = text[0]+ ''.join(i.title() for i in text[1:])
+#nalog = text[0]+ ''.join(i.title() for i in text[1:])
 for i in range(0, len(text)):
-    text[i]=text[i][0:].lower()
-#for i in range(0,len(text)):
-  #  text[i]=text[i][0].lower()+text[i][1:]
-print(' '.join(text))
+    text[i] = text[i][0]+''.join(text[i][1:])
+print(str(text))
 """
 
-#10. Write a Python program to convert a given camel case string to snake case
+#10. Write a Python program to convert a given camel case string to snake case. GeeksForGeeks
+"""
+import re
+
+word = input("Enter a word: ")
+text = re.findall("[A-Z][a-z]*", word)
+def credit(text):
+    for i in range(0, len(text)):
+        text[i] = text[i][0].lower()+text[i][1:]
+        #text[i] = text[i][0]+'_'.join(text[i][1:])
+    return text
+print('_'.join(credit(text)))
+"""
