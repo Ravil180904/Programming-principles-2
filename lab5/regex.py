@@ -56,15 +56,14 @@ print(text)
 """import re
 
 word = input("Enter a word: ")
+#ipoteka = re.findall("[A-Z][a-z]*",word)
+def to_camel_case(word):
+    text = re.split(r"[_]", word)
+    for i in range(1, len(text)):
+        text[i] = text[i].capitalize()
+    return text
 
-def credit(word):
-    ipoteka = word.split("_")
-    nalog = ipoteka[0] + ''.join(i.title() for i in ipoteka[1:])
-    #for i in range(0, len(ipoteka)):
-        #ipoteka[i] = ipoteka[i][0] + ipoteka[i][1:]
-    return nalog
-result = credit(word)
-print(str(result))
+print(''.join(to_camel_case(word)))
 """
 #8. Write a Python program to split a string at uppercase letters. GeeksForGeeks
 
@@ -78,23 +77,27 @@ print(str(text))"""
 """import re
 
 word = input("Enter a word: ")
-text = re.findall("[A-Z][a-z]*", word)
-#nalog = text[0]+ ''.join(i.title() for i in text[1:])
-for i in range(0, len(text)):
-    text[i] = text[i][0]+''.join(text[i][1:])
-print(str(text))
+text = ""
+for i in range(len(word)):
+    if(word[i].isupper()):
+        text += " "
+        text += word[i]
+    else:
+        text += word[i]
+#nalog = ' '.join(text[0:])
+print(''.join(text))
 """
 
 #10. Write a Python program to convert a given camel case string to snake case. GeeksForGeeks
-"""
-import re
+
+"""import re
 
 word = input("Enter a word: ")
 text = re.findall("[A-Z][a-z]*", word)
 def credit(text):
     for i in range(0, len(text)):
         text[i] = text[i][0].lower()+text[i][1:]
-        #text[i] = text[i][0]+'_'.join(text[i][1:])
     return text
-print('_'.join(credit(text)))
-"""
+print('_'.join(credit(text)))"""
+#print(''.join(nalog))
+
