@@ -73,8 +73,8 @@ text = [i for i in re.split("([A-Z][^A-Z]*)", word) if i]
 print(str(text))"""
 
 #9. Write a Python program to insert spaces between words starting with capital letters. PythonExercisesPracticeSolution
-
-"""import re
+"""
+import re
 
 word = input("Enter a word: ")
 text = ""
@@ -100,4 +100,3 @@ def credit(text):
     return text
 print('_'.join(credit(text)))"""
 #print(''.join(nalog))
-
