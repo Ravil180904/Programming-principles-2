@@ -1,4 +1,4 @@
-# Snake class (From lecture)
+# Add counter to score and level
 """
 import pygame
 import sys
@@ -14,11 +14,16 @@ colorGREEN = (0, 255, 0)
 colorBLUE = (0, 0, 255)
 colorYELLOW = (255, 255, 0)
 
+font = pygame.font.SysFont("Verdana", 60)
+game_over = font.render("Game over", True, colorBLACK)
+score_counter = pygame.font.SysFont("Verdana", 24)
 WIDTH = 600
 HEIGHT = 600
 
 screen  = pygame.display.set_mode((WIDTH, HEIGHT))
 
+#Start_FPS = 5
+#FPS = Start_FPS
 FPS = 5
 clock = pygame.time.Clock()
 
@@ -46,6 +51,8 @@ class Snake:
         self.body = [Point(10, 11), Point(10, 12), Point (10, 13)]
         self.dx = 1
         self.dy = 0
+        self.score = 0
+        self.snake = 0
     
     def move(self):
         for i in range(len(self.body) - 1, 0, -1):
@@ -66,31 +73,66 @@ class Snake:
         if head.x < 0 or head.x >= WIDTH // CELL or head.y < 0 or head.y >= HEIGHT // CELL:
             return True
         return False    
-    def check_collision(self, food):
+    def check_collision_food(self, food):
         head = self.body[0]
         if head.x == food.pos.x and head.y == food.pos.y:
             self.body.append(Point(head.x, head.y))
+            self.score += 1
             return True
         return False
 
-#def check_border_collision(self):
-    #head = self.body[0]
-    #if head.x < 0 or head.x >= WIDTH // CELL or head.y < 0 or head.y >= HEIGHT // CELL:
-        #return True
-    #return False
+class Level:
+    def __init__(self):
+        self.current_level = 1
+        self.foods_to_next_level = 3
+        self.speed_increaser = 5
+        self.level = 0
+
+    def check_level_up(self, snake):
+        if snake.score >= self.current_level * self.foods_to_next_level:
+            self.current_level += 1
+            self.foods_to_next_level += 3
+            global FPS
+            FPS += self.speed_increaser
+            #self.speed += 3
+            return True
+        return False
 
 class Food:
-    def __init__(self):
-        self.pos = Point(15, 15)
+    def __init__(self, snake):
+        #self.pos = Point(15, 15)
+        self.snake = snake
+        self.generate_new_position()
+
+    def generate_new_position(self):
+        while True:
+            self.pos = Point(
+                random.randint(0, WIDTH // CELL - 1),
+                random.randint(0, HEIGHT // CELL - 1)
+            )
+            if self.pos not in self.snake.body:
+                break
+    
     def move(self):
         pass
     def draw(self):
         pygame.draw.rect(screen, colorGREEN, (self.pos.x * CELL, self.pos.y * CELL, CELL, CELL))
-    
+
+def draw_counter_score(snake, level):
+    score_text = score_counter.render(f"Score: {snake.score}", True, colorBLACK)
+    level_text = score_counter.render(f"level: {level.current_level}", True, colorBLACK)
+    #next_level = score_counter.render(f"Next: {level.foods_to_next_level}", True, colorBLACK)
+    #speed_counter = score_counter.render(f"Speed: {FPS}", True, colorBLACK)
+    screen.blit(score_text, (10, 10))
+    screen.blit(level_text, (10, 30))
+    #screen.blit(next_level, (10, 50))
+    #screen.blit(speed_counter, (10, 70))
+
 done = False
 snake = Snake()
-    
-food = Food()
+level = Level()
+
+food = Food(snake)
 while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -119,14 +161,23 @@ while not done:
         if snake.check_border_collision():
             print("Game over: Snake hit the wall!")
             screen.fill(colorRED)
+            screen.blit(game_over, (130, 250))
             pygame.display.flip()
             time.sleep(2)
             pygame.quit()
             sys.exit()
 
-        if snake.check_collision(food):
+        if snake.check_collision_food(food):
             print("Got food!")
+            food.generate_new_position()
+            if level.check_level_up(snake):
+                print(f"Level {level.current_level}!")
+                #FPS = level.speed
         
+        #level.updated_speed(clock)
+        draw_counter_score(snake, level)
         pygame.display.flip()
         clock.tick(FPS)
+
+# The end! 
 """

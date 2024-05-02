@@ -342,6 +342,7 @@ pygame.time.set_timer(INC_SPEED, 0)
 
 #5. Game.py: 385; 412, 414; 430; 434; 444; 446
 
+
 import pygame, sys
 from pygame.locals import *
 import random, time
