@@ -28,10 +28,10 @@ clock = pygame.time.Clock()
 #coinx, coiny = random.randrange(40*SCREEN_WIDTH, 40*SCREEN_HEIGHT,SPEED),0
 
 font = pygame.font.SysFont("Verdana", 60)
-font_small = pygame.font.SysFont("Verdana", 20)
-font_coin = pygame.font.Font(None, 30)
+font_small = pygame.font.SysFont("Verdana", 16)
+#font_coin = pygame.font.Font(None, 30)
 game_over = font.render("Game over", True, BLACK)
-
+#speed_coin = font.render("Speed enemy: ", True, BLACK)
 background = pygame.image.load("C:\\Users\\Darya\\Documents\\programming-principles-2\\lab8\\Racer\\AnimatedStreet.png")
 
 DISPLAYSURF = pygame.display.set_mode((400, 600))
@@ -71,7 +71,7 @@ class Player(pygame.sprite.Sprite):
             if pressed_keys[K_RIGHT]:
                 self.rect.move_ip(5, 0)
 
-class coin(pygame.sprite.Sprite):
+class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = pygame.image.load(("C:\\Users\\Darya\\Documents\\programming-principles-2\\lab8\\Racer\\coin.png"))
@@ -85,15 +85,20 @@ class coin(pygame.sprite.Sprite):
         if (self.rect.bottom > SCREEN_HEIGHT):
             #SCORE += 1
             self.rect.top = 0
-            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+            #self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
             #SCORE += self.weight
-            
+
+         
 
 image_coin = ("C:\\Users\\Darya\\Documents\\programming-principles-2\\lab8\\Racer\\Player.png")
 
 P1 = Player()
 E1 = Enemy()
-C1 = coin()
+C1 = Coin()
+
+def increase_speed(E1, C1):
+    speed_enemy = font_small.render(f"Speed enemy: {SPEED}", True, BLACK)
+    DISPLAYSURF.blit(speed_enemy, (10, 10))
 
 enemies = pygame.sprite.Group()
 enemies.add(E1)
@@ -131,18 +136,19 @@ while True:
             entity.kill()
         #collision_coin.kill()
         if points > 0:
-            SPEED += 1
+            SPEED += points
             print(f"Enemy speed increases to {SPEED}")
-        C1 = coin()
+        #speed_coin = font_small.render(f"Speed enemy: {SPEED}", True, BLACK)
+        #DISPLAYSURF.blit(speed_coin, (30, 300))
+        C1 = Coin()
         coins.add(C1)
         all_sprites.add(C1)
 
         #DISPLAYSURF.blit(coin_text, (10, 10))
-        clock.tick(60)
-        pygame.display.flip()
+        #clock.tick(60)
+        pygame.display.update()
     #all_sprites.draw(DISPLAYSURF)
     #font_small = pygame.font.SysFont(None, 30)
-
     DISPLAYSURF.blit(background, (0, 0))
     
     for entity in all_sprites:
@@ -162,8 +168,9 @@ while True:
         time.sleep(2)
         pygame.quit()
         sys.exit()
-
+    increase_speed(E1, C1)
     pygame.display.update()
     FramePerSec.tick(FPS)
+
 # The end!!!
 """
