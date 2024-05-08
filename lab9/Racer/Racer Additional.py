@@ -1,6 +1,4 @@
-# Randomly generating coins with different weights on the road
-# Increase the speed of Enemy when the player earns N coins
-# Comment your code
+# Showing the speed of enemy
 """
 import pygame, sys, os
 from pygame.locals import *
@@ -28,7 +26,10 @@ clock = pygame.time.Clock()
 #coinx, coiny = random.randrange(40*SCREEN_WIDTH, 40*SCREEN_HEIGHT,SPEED),0
 
 font = pygame.font.SysFont("Verdana", 60)
+font_small = pygame.font.SysFont("Verdana", 16)
+#font_coin = pygame.font.Font(None, 30)
 game_over = font.render("Game over", True, BLACK)
+#speed_coin = font.render("Speed enemy: ", True, BLACK)
 background = pygame.image.load("C:\\Users\\Darya\\Documents\\programming-principles-2\\lab8\\Racer\\AnimatedStreet.png")
 
 DISPLAYSURF = pygame.display.set_mode((400, 600))
@@ -93,6 +94,9 @@ P1 = Player()
 E1 = Enemy()
 C1 = Coin()
 
+def increase_speed(E1, C1):
+    speed_enemy = font_small.render(f"Speed enemy: {SPEED}", True, BLACK)
+    DISPLAYSURF.blit(speed_enemy, (10, 10))
 
 enemies = pygame.sprite.Group()
 enemies.add(E1)
@@ -162,6 +166,7 @@ while True:
         time.sleep(2)
         pygame.quit()
         sys.exit()
+    increase_speed(E1, C1)
     pygame.display.update()
     FramePerSec.tick(FPS)
 
