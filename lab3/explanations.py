@@ -1,3 +1,4 @@
+"""
 text = "Hello world"
 words = ''.join(text)
 print(words)
@@ -14,3 +15,4 @@ print(words)
 words = text.split()
 words = ' '.join(words)
 print(words)
+"""

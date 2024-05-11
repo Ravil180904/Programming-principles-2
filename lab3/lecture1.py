@@ -210,6 +210,12 @@ nums = [1, 2, 3, 4, 5]
 print(ourmap(lambda a: a ** 2, nums))
 
 
+#nums = [1, 2, 3, 4, 5]
+
+#result = list(map(lambda x: x ** 2, nums))
+#print(result)
+
+
 #14. Lambda functions
 
 def power(n):
