@@ -1,4 +1,5 @@
 # 1. Create a generator that generates the squares of numbers up to some number N
+"""
 N = int(input())
 def square(x):
     for i in range(1, x+1):
@@ -46,3 +47,4 @@ def numbers(n):
 print("Numbers: ")
 for x in numbers(n):
     print(x)
+"""
