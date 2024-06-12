@@ -147,3 +147,9 @@ with open(r'C://Users//Darya//Documents//programming-principles-2//lab6//hello.t
         fp.write("%s\n" % i)
     print("Done")
 """
+
+"""
+pettern = "[a-zA-Z0-9]+\.[com|net]"
+if(re.search(pettern, input)):
+print("Valid email")
+"""

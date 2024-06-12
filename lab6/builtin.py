@@ -9,8 +9,19 @@ ipoteka = list(map(lambda e : e * e, nalogovaya))
 
 print(list(ipoteka))
 """
+"""
+x = input("Enter a x: ")
+nalogovaya = x.split()
 
-#2. Write a Python program with builtin function that accepts a string and calculate the number of upper case letters and lower case letters 
+for i in range(1, len(nalogovaya)):
+    nalogovaya[i] = int(nalogovaya[i])
+def is_square(lamb, nalogovaya):
+    return lamb(nalogovaya)
+
+ipoteka = is_square(lambda e : e * e, nalogovaya)
+
+print(list(ipoteka))"""
+#2. Write a Pyton program with builtin function that accepts a string and calculate the number of upper case letters and lower case letters 
 # GeeksForGeeks
 """
 Str = input("")
@@ -49,13 +60,12 @@ def ded_inside(lamb, number, millisecond):
     sleep(millisecond / 1000)
     return lamb(number)
 
-
 square_root=ded_inside(lambda x: math.sqrt(x), number, millisecond)
 print("Square root of ", number, " after ", millisecond, " milliseconds is ", square_root)
 """
 
 #5. Write a Python program with builtin function that returns True if all elements of the tuple are true.
-
+"""
 halyava = input("list: ")
 list_halyava = halyava.split()
 
@@ -64,7 +74,7 @@ for i in range(len(list_halyava)):
 print(list_halyava)
 x = all(list_halyava)
 print("Values:", x)
-
+"""
 """
 halyava = [True, True, 1]
 
